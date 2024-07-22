@@ -32,8 +32,8 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://www.frontendmentor.io/solutions/my-solution-for-product-list-with-cart-S_3Cr1Yvmx)
-- Live Site URL: [Add live site URL here](https://frontend-mentor-cart.vercel.app)
+- Solution URL: [Solution](https://www.frontendmentor.io/solutions/my-solution-for-product-list-with-cart-S_3Cr1Yvmx)
+- Live Site URL: [Live Site URL](https://frontend-mentor-cart.vercel.app)
 
 ## My process
 
@@ -57,4 +57,4 @@ In this project I practiced my skills in layout, in react in general, as well as
 
 ## Author
 
-- Frontend Mentor - [@yourusername](https://www.frontendmentor.io/profile/dzhumanov)
+- Frontend Mentor - [@dzhumanov](https://www.frontendmentor.io/profile/dzhumanov)
