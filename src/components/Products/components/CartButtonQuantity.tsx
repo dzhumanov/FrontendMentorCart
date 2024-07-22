@@ -1,23 +1,48 @@
 import { Box, Typography } from "@mui/material";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
+import {  useAppSelector } from "../../../app/Hooks";
+import { selectCartItems } from "../../Cart/cartSlice";
 
 interface Props {
   onMinus: () => void;
+  onAdd: () => void;
+  onDecrease: () => void;
+  id: string;
 }
 
-const CartButtonQuantity: React.FC<Props> = ({ onMinus }) => {
-  const [state, setState] = useState<number>(1);
+const CartButtonQuantity: React.FC<Props> = ({
+  onMinus,
+  onAdd,
+  onDecrease,
+  id,
+}) => {
+  const items = useAppSelector(selectCartItems);
+  const cartItem = items.find((item) => item.item.id === id);
+  const [state, setState] = useState<number | null>(null);
+
+  useEffect(() => {
+    if (cartItem) {
+      setState(cartItem.amount);
+    } else {
+      setState(0);
+      onMinus();
+    }
+  }, [cartItem]);
 
   const increaseQuantity = () => {
-    setState((prev) => prev + 1);
+    onAdd();
   };
 
   const decreaseQuantity = () => {
+    if (!state) {
+      return;
+    }
     if (state > 1) {
-      setState((prev) => prev - 1);
+      onDecrease();
     } else {
+      onDecrease();
       onMinus();
     }
   };

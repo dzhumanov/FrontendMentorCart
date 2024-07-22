@@ -3,7 +3,7 @@ import AddToCartButton from "./components/AddToCartButton";
 import { useState } from "react";
 import CartButtonQuantity from "./components/CartButtonQuantity";
 import { useAppDispatch } from "../../app/Hooks";
-import { addToCart } from "../Cart/cartSlice";
+import { addToCart, decreaseAmount } from "../Cart/cartSlice";
 import { Item } from "../../types";
 
 interface Props {
@@ -30,6 +30,17 @@ const Product: React.FC<Props> = ({ id, name, category, price, image }) => {
     setBtnStatus(true);
   };
 
+  const decreaseItemFromCart = () => {
+    const obj: Item = {
+      id: id,
+      name: name,
+      category: category,
+      price: price,
+      image: image,
+    };
+    dispatch(decreaseAmount(obj));
+  };
+
   return (
     <Box component={"div"} sx={{ display: "flex", flexDirection: "column" }}>
       <Box component={"div"} sx={{ position: "relative", width: "100%" }}>
@@ -44,7 +55,12 @@ const Product: React.FC<Props> = ({ id, name, category, price, image }) => {
           alt={name}
         />
         {btnStatus ? (
-          <CartButtonQuantity onMinus={() => setBtnStatus(false)} />
+          <CartButtonQuantity
+            onMinus={() => setBtnStatus(false)}
+            onAdd={addItemToCart}
+            onDecrease={decreaseItemFromCart}
+            id={id}
+          />
         ) : (
           <AddToCartButton onClick={addItemToCart} />
         )}

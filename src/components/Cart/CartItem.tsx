@@ -1,13 +1,22 @@
 import { Box, Grid, Typography } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
+import { useAppDispatch } from "../../app/Hooks";
+import { deleteFromCart } from "./cartSlice";
 
 interface Props {
+  id: string;
   name: string;
   price: number;
   amount: number;
 }
 
-const CartItem: React.FC<Props> = ({ name, price, amount }) => {
+const CartItem: React.FC<Props> = ({ id, name, price, amount }) => {
+  const dispatch = useAppDispatch();
+
+  const deleteItemFromCart = () => {
+    dispatch(deleteFromCart(id));
+  };
+
   return (
     <Box component="div" sx={{ borderBottom: "1px solid red", mt: 3 }}>
       <Grid container>
@@ -24,7 +33,7 @@ const CartItem: React.FC<Props> = ({ name, price, amount }) => {
                 @ ${price}
               </Typography>
               <Typography variant="body2" sx={{ ml: 2 }}>
-                ${price}
+                ${price * amount}
               </Typography>
             </Box>
           </Box>
@@ -38,8 +47,9 @@ const CartItem: React.FC<Props> = ({ name, price, amount }) => {
               alignItems: "center",
             }}
           >
-            <Box component="div" sx={{ width: "20px", height: "auto", mt: 1 }}>
+            <Box component="div" sx={{ width: "20px", heigsht: "auto", mt: 1 }}>
               <CloseIcon
+                onClick={deleteItemFromCart}
                 sx={{
                   border: "1px solid black",
                   borderRadius: "50%",
