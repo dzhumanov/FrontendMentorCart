@@ -2,16 +2,33 @@ import { Box, Typography } from "@mui/material";
 import AddToCartButton from "./components/AddToCartButton";
 import { useState } from "react";
 import CartButtonQuantity from "./components/CartButtonQuantity";
+import { useAppDispatch } from "../../app/Hooks";
+import { addToCart } from "../Cart/cartSlice";
+import { Item } from "../../types";
 
 interface Props {
+  id: string;
   name: string;
   category: string;
   price: number;
   image: string;
 }
 
-const Product: React.FC<Props> = ({ name, category, price, image }) => {
+const Product: React.FC<Props> = ({ id, name, category, price, image }) => {
   const [btnStatus, setBtnStatus] = useState<boolean>(false);
+  const dispatch = useAppDispatch();
+
+  const addItemToCart = () => {
+    const obj: Item = {
+      id: id,
+      name: name,
+      category: category,
+      price: price,
+      image: image,
+    };
+    dispatch(addToCart(obj));
+    setBtnStatus(true);
+  };
 
   return (
     <Box component={"div"} sx={{ display: "flex", flexDirection: "column" }}>
@@ -29,7 +46,7 @@ const Product: React.FC<Props> = ({ name, category, price, image }) => {
         {btnStatus ? (
           <CartButtonQuantity onMinus={() => setBtnStatus(false)} />
         ) : (
-          <AddToCartButton onClick={() => setBtnStatus(true)} />
+          <AddToCartButton onClick={addItemToCart} />
         )}
       </Box>
       <Typography variant="body1" sx={{ mt: 5 }}>

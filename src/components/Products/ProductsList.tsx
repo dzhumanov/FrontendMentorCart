@@ -8,6 +8,7 @@ const ProductsList = () => {
       {data.map((item, index) => (
         <Grid item xs={12} sm={6} md={4} key={index}>
           <Product
+            id={item.id}
             name={item.name}
             category={item.category}
             price={item.price}
