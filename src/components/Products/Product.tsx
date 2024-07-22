@@ -1,9 +1,18 @@
 import { Box, Typography } from "@mui/material";
-import data from "../../data/data.json";
 import AddToCartButton from "./components/AddToCartButton";
+import { useState } from "react";
+import CartButtonQuantity from "./components/CartButtonQuantity";
 
-const Product = () => {
-  const image = data[0].image;
+interface Props {
+  name: string;
+  category: string;
+  price: number;
+  image: string;
+}
+
+const Product: React.FC<Props> = ({ name, category, price, image }) => {
+  const [btnStatus, setBtnStatus] = useState<boolean>(false);
+
   return (
     <Box component={"div"} sx={{ display: "flex", flexDirection: "column" }}>
       <Box component={"div"} sx={{ position: "relative", width: "100%" }}>
@@ -14,19 +23,23 @@ const Product = () => {
             height: "auto",
             borderRadius: "10%",
           }}
-          src={image.desktop}
-          alt={data[0].name}
+          src={image}
+          alt={name}
         />
-        <AddToCartButton />
+        {btnStatus ? (
+          <CartButtonQuantity onMinus={() => setBtnStatus(false)} />
+        ) : (
+          <AddToCartButton onClick={() => setBtnStatus(true)} />
+        )}
       </Box>
       <Typography variant="body1" sx={{ mt: 5 }}>
-        {data[0].category}
+        {category}
       </Typography>
       <Typography variant="body1" sx={{ fontSize: "16px", fontWeight: "700" }}>
-        {data[0].name}
+        {name}
       </Typography>
       <Typography variant="body1" sx={{ fontWeight: "600", color: "red" }}>
-        ${data[0].price}
+        ${price}
       </Typography>
     </Box>
   );

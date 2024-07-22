@@ -1,10 +1,15 @@
 import { Box, Typography } from "@mui/material";
-import CartIcon from "./CartIcon";
+import CartIcon from "../../Icons/CartIcon";
 
-const AddToCartButton = () => {
+interface Props {
+  onClick: () => void;
+}
+
+const AddToCartButton: React.FC<Props> = ({ onClick }) => {
   return (
     <Box
       component={"div"}
+      onClick={onClick}
       sx={{
         display: "flex",
         justifyContent: "center",
