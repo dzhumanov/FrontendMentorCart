@@ -6,11 +6,11 @@ function App() {
   return (
     <>
       <Container maxWidth="xl">
-        <Grid container spacing={3}>
-          <Grid item xs={8}>
+        <Grid container spacing={6}>
+          <Grid item xs={9}>
             <Products />
           </Grid>
-          <Grid item xs={4}>
+          <Grid item xs={3}>
             <Cart />
           </Grid>
         </Grid>

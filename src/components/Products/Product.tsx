@@ -72,7 +72,7 @@ const Product: React.FC<Props> = ({ id, name, category, price, image }) => {
         {name}
       </Typography>
       <Typography variant="body1" sx={{ fontWeight: "600", color: "red" }}>
-        ${price}
+        ${price.toFixed(2)}
       </Typography>
     </Box>
   );

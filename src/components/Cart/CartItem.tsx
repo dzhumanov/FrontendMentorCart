@@ -47,7 +47,7 @@ const CartItem: React.FC<Props> = ({ id, name, price, amount }) => {
               alignItems: "center",
             }}
           >
-            <Box component="div" sx={{ width: "20px", heigsht: "auto", mt: 1 }}>
+            <Box component="div" sx={{ width: "20px", height: "20px", mt: 1 }}>
               <CloseIcon
                 onClick={deleteItemFromCart}
                 sx={{
@@ -56,6 +56,10 @@ const CartItem: React.FC<Props> = ({ id, name, price, amount }) => {
                   width: "100%",
                   height: "100%",
                   cursor: "pointer",
+                  ":hover": {
+                    border: "0",
+                    outline: "2px solid black",
+                  },
                 }}
               />
             </Box>
