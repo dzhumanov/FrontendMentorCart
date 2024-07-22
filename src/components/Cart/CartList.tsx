@@ -1,6 +1,8 @@
 import { useAppSelector } from "../../app/Hooks";
+import EmptyCart from "../Icons/EmptyCart";
+import CartItem from "./CartItem";
 import { selectCartItems } from "./cartSlice";
-import { Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 
 const CartList = () => {
   const items = useAppSelector(selectCartItems);
@@ -9,10 +11,28 @@ const CartList = () => {
     <>
       {items && items.length > 0 ? (
         items.map((cartItem) => (
-          <Typography variant="h3">{cartItem.item.name}</Typography>
+          <CartItem
+            key={cartItem.item.id}
+            name={cartItem.item.name}
+            price={cartItem.item.price}
+            amount={cartItem.amount}
+          />
         ))
       ) : (
-        <Typography variant="h3">Select something!</Typography>
+        <Box
+          component="div"
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            mt: 3,
+          }}
+        >
+          <EmptyCart />
+          <Typography variant="body1">
+            Your added items will appear here
+          </Typography>
+        </Box>
       )}
     </>
   );
