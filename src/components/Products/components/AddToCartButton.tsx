@@ -1,5 +1,6 @@
 import { Box, Typography } from "@mui/material";
 import CartIcon from "../../Icons/CartIcon";
+import { RED } from "../../../constants";
 
 interface Props {
   onClick: () => void;
@@ -16,7 +17,7 @@ const AddToCartButton: React.FC<Props> = ({ onClick }) => {
         alignItems: "center",
         width: "160px",
         height: "40px",
-        border: "1px solid red",
+        border: `1px solid ${RED}`,
         borderRadius: "20px",
         position: "absolute",
         bottom: "-5%",
@@ -26,7 +27,7 @@ const AddToCartButton: React.FC<Props> = ({ onClick }) => {
         textAlign: "center",
         cursor: "pointer",
         ":hover": {
-          color: "red",
+          color: RED,
         },
       }}
     >

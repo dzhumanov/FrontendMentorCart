@@ -15,6 +15,7 @@ import {
 } from "../Cart/cartSlice";
 import { Box, Typography } from "@mui/material";
 import ModalItem from "./ModalItem";
+import { RED } from "../../constants";
 
 const Transition = React.forwardRef(function Transition(
   props: TransitionProps & {
@@ -74,6 +75,7 @@ const Modal = () => {
             <>
               {items.map((item) => (
                 <ModalItem
+                  key={item.item.id}
                   id={item.item.id}
                   name={item.item.name}
                   price={item.item.price}
@@ -105,7 +107,7 @@ const Modal = () => {
             sx={{
               width: "100%",
               fontWeight: "600",
-              bgcolor: "red",
+              bgcolor: RED,
               borderRadius: "25px",
               py: 2,
               mt: 3,

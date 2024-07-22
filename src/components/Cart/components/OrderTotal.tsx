@@ -1,6 +1,7 @@
 import { Box, Button, Typography } from "@mui/material";
 import { useAppDispatch, useAppSelector } from "../../../app/Hooks";
 import { selectCartItems, toggleModal } from "../cartSlice";
+import { RED } from "../../../constants";
 
 const OrderTotal = () => {
   const dispatch = useAppDispatch();
@@ -37,7 +38,7 @@ const OrderTotal = () => {
         onClick={toggle}
         sx={{
           fontWeight: "600",
-          bgcolor: "red",
+          bgcolor: RED,
           borderRadius: "25px",
           py: 2,
           mt: 3,

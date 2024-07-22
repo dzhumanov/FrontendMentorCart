@@ -5,6 +5,7 @@ import CartButtonQuantity from "./components/CartButtonQuantity";
 import { useAppDispatch } from "../../app/Hooks";
 import { addToCart, decreaseAmount } from "../Cart/cartSlice";
 import { Item } from "../../types";
+import { RED } from "../../constants";
 
 interface Props {
   id: string;
@@ -45,15 +46,18 @@ const Product: React.FC<Props> = ({ id, name, category, price, image }) => {
     <Box component={"div"} sx={{ display: "flex", flexDirection: "column" }}>
       <Box component={"div"} sx={{ position: "relative", width: "100%" }}>
         <Box
-          component={"img"}
+          component="img"
           sx={{
             width: "100%",
             height: "auto",
             borderRadius: "10%",
+            boxSizing: "border-box",
+            outline: btnStatus ? `2px solid ${RED}` : "none",
           }}
           src={image}
           alt={name}
         />
+
         {btnStatus ? (
           <CartButtonQuantity
             onMinus={() => setBtnStatus(false)}
@@ -71,7 +75,7 @@ const Product: React.FC<Props> = ({ id, name, category, price, image }) => {
       <Typography variant="body1" sx={{ fontSize: "16px", fontWeight: "700" }}>
         {name}
       </Typography>
-      <Typography variant="body1" sx={{ fontWeight: "600", color: "red" }}>
+      <Typography variant="body1" sx={{ fontWeight: "600", color: RED }}>
         ${price.toFixed(2)}
       </Typography>
     </Box>

@@ -2,6 +2,7 @@ import { Box, Grid, Typography } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import { useAppDispatch } from "../../app/Hooks";
 import { deleteFromCart } from "./cartSlice";
+import { RED } from "../../constants";
 
 interface Props {
   id: string;
@@ -18,7 +19,7 @@ const CartItem: React.FC<Props> = ({ id, name, price, amount }) => {
   };
 
   return (
-    <Box component="div" sx={{ borderBottom: "1px solid red", mt: 3 }}>
+    <Box component="div" sx={{ borderBottom: `1px solid ${RED}`, mt: 3 }}>
       <Grid container>
         <Grid item xs={10}>
           <Box component="div">

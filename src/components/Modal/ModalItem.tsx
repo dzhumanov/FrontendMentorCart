@@ -1,4 +1,5 @@
 import { Box, Grid, Typography } from "@mui/material";
+import { RED } from "../../constants";
 
 interface Props {
   id: string;
@@ -10,7 +11,7 @@ interface Props {
 
 const ModalItem: React.FC<Props> = ({ name, price, amount, image }) => {
   return (
-    <Box component="div" sx={{ borderBottom: "1px solid red", pb: 1, mb:1 }}>
+    <Box component="div" sx={{ borderBottom: `1px solid ${RED}`, pb: 1, mb:1 }}>
       <Grid container>
         <Grid item xs={2}>
           <Box

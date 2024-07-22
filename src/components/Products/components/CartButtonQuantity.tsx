@@ -4,6 +4,7 @@ import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 import {  useAppSelector } from "../../../app/Hooks";
 import { selectCartItems } from "../../Cart/cartSlice";
+import { RED } from "../../../constants";
 
 interface Props {
   onMinus: () => void;
@@ -56,7 +57,7 @@ const CartButtonQuantity: React.FC<Props> = ({
         alignItems: "center",
         width: "160px",
         height: "40px",
-        border: "1px solid red",
+        border: `1px solid ${RED}`,
         borderRadius: "20px",
         position: "absolute",
         bottom: "-5%",
@@ -76,7 +77,7 @@ const CartButtonQuantity: React.FC<Props> = ({
           cursor: "pointer",
           ":hover": {
             bgcolor: "white",
-            fill: "red",
+            fill: RED,
           },
         }}
       />
@@ -91,7 +92,7 @@ const CartButtonQuantity: React.FC<Props> = ({
           cursor: "pointer",
           ":hover": {
             bgcolor: "white",
-            fill: "red",
+            fill: RED,
           },
         }}
       />
