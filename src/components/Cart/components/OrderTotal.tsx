@@ -1,9 +1,16 @@
 import { Box, Button, Typography } from "@mui/material";
-import { useAppSelector } from "../../../app/Hooks";
-import { selectCartItems } from "../cartSlice";
+import { useAppDispatch, useAppSelector } from "../../../app/Hooks";
+import { selectCartItems, toggleModal } from "../cartSlice";
 
 const OrderTotal = () => {
+  const dispatch = useAppDispatch();
   const items = useAppSelector(selectCartItems);
+
+  const toggle = () => {
+    if (items && items.length > 0) {
+      dispatch(toggleModal());
+    } else alert("0 items");
+  };
 
   const total = items.reduce((acc, item) => {
     return acc + item.amount * item.item.price;
@@ -27,10 +34,12 @@ const OrderTotal = () => {
       </Box>
       <Button
         variant="contained"
+        onClick={toggle}
         sx={{
+          fontWeight: "600",
           bgcolor: "red",
-          borderRadius: "20px",
-          py: 1,
+          borderRadius: "25px",
+          py: 2,
           mt: 3,
           ":hover": {
             bgcolor: "#952C0C",

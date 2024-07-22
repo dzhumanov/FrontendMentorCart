@@ -30,10 +30,10 @@ const CartItem: React.FC<Props> = ({ id, name, price, amount }) => {
                 {amount} x
               </Typography>
               <Typography variant="body2" sx={{ ml: 3 }}>
-                @ ${price}
+                @ ${price.toFixed(2)}
               </Typography>
               <Typography variant="body2" sx={{ ml: 2 }}>
-                ${price * amount}
+                ${(price * amount).toFixed(2)}
               </Typography>
             </Box>
           </Box>

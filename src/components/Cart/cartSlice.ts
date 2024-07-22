@@ -4,10 +4,12 @@ import { RootState } from "../../app/store";
 
 export interface CartState {
   items: CartItem[];
+  modalStatus: boolean;
 }
 
 export const initialState: CartState = {
   items: [],
+  modalStatus: false,
 };
 
 export const cartSlice = createSlice({
@@ -44,11 +46,24 @@ export const cartSlice = createSlice({
     deleteFromCart: (state, { payload: id }: PayloadAction<string>) => {
       state.items = state.items.filter((cartItem) => cartItem.item.id !== id);
     },
+    emptyCart: (state) => {
+      state.items = [];
+    },
+    toggleModal: (state) => {
+      state.modalStatus = !state.modalStatus;
+    },
   },
 });
 
 export const cartReducer = cartSlice.reducer;
 
-export const { addToCart, decreaseAmount, deleteFromCart } = cartSlice.actions;
+export const {
+  addToCart,
+  decreaseAmount,
+  deleteFromCart,
+  emptyCart,
+  toggleModal,
+} = cartSlice.actions;
 
 export const selectCartItems = (state: RootState) => state.cart.items;
+export const selectModalStatus = (state: RootState) => state.cart.modalStatus;

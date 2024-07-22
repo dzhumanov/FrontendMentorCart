@@ -1,6 +1,7 @@
 import { Box, Typography } from "@mui/material";
 import CartList from "./CartList";
 import OrderTotal from "./components/OrderTotal";
+import Modal from "../Modal/Modal";
 
 const Cart = () => {
   return (
@@ -13,6 +14,7 @@ const Cart = () => {
       </Typography>
       <CartList />
       <OrderTotal />
+      <Modal />
     </Box>
   );
 };
