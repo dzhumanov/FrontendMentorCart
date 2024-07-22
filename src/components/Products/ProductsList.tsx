@@ -1,12 +1,22 @@
+import { Grid } from "@mui/material";
 import Product from "./Product";
 
 const ProductsList = () => {
   return (
-    <>
-      <Product/>
-      <Product/>
-      <Product/>
-    </>
+    <Grid container spacing={2}>
+      <Grid item xs={4}>
+        <Product />
+      </Grid>
+      <Grid item xs={4}>
+        <Product />
+      </Grid>
+      <Grid item xs={4}>
+        <Product />
+      </Grid>
+      <Grid item xs={4}>
+        <Product />
+      </Grid>
+    </Grid>
   );
 };
 
